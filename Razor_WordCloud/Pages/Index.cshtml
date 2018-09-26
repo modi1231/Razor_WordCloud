@@ -1,0 +1,28 @@
+﻿@page
+@model Razor_WordCloud.Pages.IndexModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div>
+    <h2>Show what's in the collection</h2>
+    # of tags: @Model.myTags.Count
+    <br /><br />
+    @for (int i = 0; i < Model.myTags.Count; i++)
+    {
+        @Model.myTags[i].Tag;
+        <span> - </span>
+        @Model.myTags[i].Count;
+        <span> - </span>
+        @Model.myTags[i].HTMLStyle;
+        <br />
+    }
+</div>
+<hr />
+Tag cloud:<br />
+<div style="width: 300px;justify-content: center;background-color:aliceblue;">
+    @for (int i = 0; i < Model.myTags.Count; i++)
+    {
+        <span style="font-size:@(Model.myTags[i].HTMLStyle);">@Model.myTags[i].Tag</span>
+    }
+</div>
